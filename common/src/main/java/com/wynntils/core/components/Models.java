@@ -10,6 +10,7 @@ import com.wynntils.models.abilities.ShamanTotemModel;
 import com.wynntils.models.character.CharacterModel;
 import com.wynntils.models.character.CharacterSelectionModel;
 import com.wynntils.models.character.PlayerInventoryModel;
+import com.wynntils.models.containers.BankModel;
 import com.wynntils.models.containers.ContainerModel;
 import com.wynntils.models.containers.LootChestModel;
 import com.wynntils.models.discoveries.DiscoveryModel;
@@ -63,6 +64,7 @@ public final class Models {
     public static final WynnItemModel WynnItem = new WynnItemModel();
 
     // Models with dependencies, ordered alphabetically as far as possible
+    public static final BankModel Bank = new BankModel(Container);
     public static final CombatXpModel CombatXp = new CombatXpModel(WorldState);
     public static final CharacterModel Character = new CharacterModel(CombatXp);
     public static final FriendsModel Friends = new FriendsModel(WorldState);

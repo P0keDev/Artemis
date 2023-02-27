@@ -20,6 +20,8 @@ public final class ContainerModel extends Model {
 
     private static final Pattern LOOT_CHEST_PATTERN = Pattern.compile("Loot Chest (.+)");
 
+    private static final Pattern BANK_PAGE_PATTERN = Pattern.compile("\\[Pg\\. ([0-9]+)\\] [a-z_A-Z0-9 ]+'s? Bank");
+
     public ContainerModel() {
         super(List.of());
     }
@@ -41,6 +43,14 @@ public final class ContainerModel extends Model {
 
         String title = screen.getTitle().getString();
         return isLootChest(title) || title.startsWith("Daily Rewards") || title.contains("Objective Rewards");
+    }
+
+    public boolean isBankPage(Screen screen) {
+        return bankPageMatcher(screen).matches();
+    }
+
+    public Matcher bankPageMatcher(Screen screen) {
+        return BANK_PAGE_PATTERN.matcher(ComponentUtils.getUnformatted(screen.getTitle()));
     }
 
     public Matcher lootChestMatcher(Screen screen) {
